@@ -32,3 +32,12 @@ app.get_graph().draw_mermaid_png(output_file_path="flow.png")
 
 if __name__ == "__main__":
     print("---LangGraph Course---")
+    res = app.invoke(
+        {
+            "messages": [
+                HumanMessage(content="Dame la temperatura actual en Rosario en Celsius y conviértela a Fahrenheit.")
+            ]
+        }
+    )
+    print(res["messages"][LAST].content)
+

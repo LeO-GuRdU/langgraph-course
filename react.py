@@ -14,8 +14,24 @@ def triple(num: float) -> float:
     """
     return float(num) * 3
 
+@tool
+def transform_farenheit_to_celsius(fahrenheit: float) -> float:
+    """
+    param fahrenheit: Temperature in Fahrenheit.
+    return: Temperature in Celsius.
+    """
+    return (fahrenheit - 32) * 5.0 / 9.0
 
-tools = [TavilySearch(max_results=1), triple]
+@tool
+def transform_celsius_to_farenheit(celsius: float) -> float:
+    """
+    param celsius: Temperature in Celsius.
+    return: Temperature in Fahrenheit.
+    """
+    return (celsius * 9.0 / 5.0) + 32
+
+
+tools = [TavilySearch(max_results=1), triple, transform_farenheit_to_celsius, transform_celsius_to_farenheit]
 
 llm = ChatGoogleGenerativeAI(
     model="gemini-2.5-flash",
